@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ButtonComponent from './ButtonComponent.jsx';
+import Button from '../components/Button.jsx';
 
-function Login() {
+function LoginContainer() {
   const [verifyData, setVerifyData] = useState({
     username: '',
     password: '',
@@ -36,8 +36,8 @@ function Login() {
   };
 
   return (
-    <form id="loginForm" onSubmit={handleSubmit}>
-      <div>
+    <form id="loginForm" onSubmit={handleSubmit} >
+      <div >
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -60,9 +60,9 @@ function Login() {
         />
       </div>
       {/* <button type="submit">Login</button> */}
-      <ButtonComponent to='/record' btnText='Login' />
+      <Button to='/play' btnText='Login' />
     </form>
   );
 }
 
-export default Login;
+export default LoginContainer;

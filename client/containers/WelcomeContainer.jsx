@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import ButtonComponent from '../components/ButtonComponent.jsx';
-import Signup from '../components/signup.jsx';
-import Login from '../components/login.jsx';
+import ButtonComponent from '../components/Button.jsx';
+
 
 const WelcomeContainer = () => {
   const activeState = useSelector((state) => state.audio.render);
