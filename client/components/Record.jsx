@@ -13,6 +13,8 @@ const Record = () => {
   const [isBlocked, setIsBlocked] = useState(true);
   const [mp3File, setMp3File] = useState();
   const [resultsReady, setResultsReady] = useState(false);
+
+  
   useEffect(() => {
     navigator.getUserMedia(
       { audio: true },

@@ -4,23 +4,28 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: path.join(__dirname, "./client/index.js"),
+  mode: process.env.NODE_ENV,
+  // entry: path.join(__dirname, "/client/index.js"),
+  entry: {index: './client/index.js'},
   output: {
-    path: path.join(__dirname, "/dist"),
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
-  //   mode: process.env.NODE_ENV,
-  mode: "development",
+  // output: {
+  //   path: path.join(__dirname, "/dist"),
+  //   filename: "bundle.js",
+  // },
   //dont need to npm to run dev if we have anychange
   watch: true,
-  plugins: [
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({ title: "development", template: "./index.html" }),
-  ],
+  target: 'web',
+
   devServer: {
     historyApiFallback: true,
-    host: "localhost",
-    port: 8080,
+    // host: "localhost",
+    // port: 8080,
+    open: true,
+    hot: true,
+    liveReload: true,
     static: {
       directory: path.resolve(__dirname),
       publicPath: "/",
@@ -32,6 +37,16 @@ module.exports = {
       },
     ],
   },
+
+  plugins: [
+    new MiniCssExtractPlugin(),
+    new HtmlWebpackPlugin({ title: "development", template: "./index.html" }),
+  ],
+
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
+
   module: {
     rules: [
       {

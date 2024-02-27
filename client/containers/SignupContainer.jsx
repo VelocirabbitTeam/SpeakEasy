@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../components/Button.jsx";
 
-function SignupContainer() {
+function Signup() {
   const [loginData, setLoginData] = useState({
     username: "",
     email: "",
@@ -72,9 +72,9 @@ function SignupContainer() {
         />
       </div>
       {/* <button type="submit">Sign Up</button> */}
-      <Button to='/play' btnText='Sign Up' />
+      <Button to='/record' btnText='Sign Up' />
     </form>
   );
 }
 
-export default SignupContainer;
+export default Signup;
