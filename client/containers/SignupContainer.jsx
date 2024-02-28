@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "../components/Button.jsx";
 
-function Signup() {
+function SignupContainer() {
   const [loginData, setLoginData] = useState({
     username: "",
     email: "",
@@ -77,4 +77,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignupContainer;

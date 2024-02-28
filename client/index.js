@@ -16,11 +16,10 @@ import {
 import WelcomeContainer from "./containers/WelcomeContainer.jsx";
 import PlayContainer from "./containers/PlayContainer.jsx";
 import ResultContainer from "./containers/ResultContainer.jsx";
-import SignupContainer from "./containers/SignupContainer.jsx";
+import SignupContainer from "./Containers/SignupContainer.jsx";
 import LoginContainer from "./containers/LoginContainer.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 
-const root = createRoot(document.getElementById("root"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +38,7 @@ const router = createBrowserRouter(
   )
 );
 
+const root = createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <RouterProvider router={router} />
