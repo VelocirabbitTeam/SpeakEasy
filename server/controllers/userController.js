@@ -20,6 +20,30 @@ userController.createUser = async (req, res, next) => {
   }
 };
 
+userController.verifyUser = async (req, res, next) => {
+  try {
+    console.log('in user controller');
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    console.log('user.comparePassword: ', await user.comparePassword(password))
+    console.log('user: ', user);
+
+    if (user) {
+      console.log('in the first if');
+      if (await user.comparePassword(password)) {
+        console.log('in the second if');
+        res.locals.user1 = user;
+        return next();
+      }
+    } else {
+      res.status(403).json('Cannot find user!');
+    }
+  } catch (err) {
+    return next(err);
+  }
+};
+
 userController.getAllUsers = (req, res, next) => {
   const query = 'SELECT * FROM users;';
   db.query(query)

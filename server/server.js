@@ -22,7 +22,7 @@ connectDB();
 // app.use('/test', testRouter);
 
 // route to all request from client database
-//app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 app.use('/user', userRouter);
 

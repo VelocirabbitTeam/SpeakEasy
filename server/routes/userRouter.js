@@ -14,7 +14,16 @@ const userController = require('../controllers/userController');
 const router = express.Router();
 
 router.post('/create', userController.createUser, (req, res) => {
-  res.status(200).send('user created!');
+  res.status(200).json(res.locals.newUser);
+});
+
+router.post('/signIn', userController.verifyUser, (req, res) => {
+  // res.status(200).json(res.locals.user1);
+  res.status(200).json({
+    user_id: res.locals.user1._id,
+    name: res.locals.user1.name,
+    email: res.locals.user1.email
+  });
 });
 
 router.get('/all', userController.getAllUsers, (req, res) => {
