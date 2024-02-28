@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import testAudio from '../assets/audio-test.mp3';
-import MicRecorder from 'mic-recorder-to-mp3';
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { updateSessionData } from '../slices/reducers/userSlice.js';
+import React, { useState, useEffect } from "react";
+import testAudio from "../assets/audio-test.mp3";
+import MicRecorder from "mic-recorder-to-mp3";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateSessionData } from "../slices/reducers/userSlice.js";
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -14,16 +14,15 @@ const Record = () => {
   const [mp3File, setMp3File] = useState();
   const [resultsReady, setResultsReady] = useState(false);
 
-  
   useEffect(() => {
     navigator.getUserMedia(
       { audio: true },
       () => {
-        console.log('audio permission granted!');
+        console.log("audio permission granted!");
         setIsBlocked(false);
       },
       () => {
-        console.log('audio permission denied');
+        console.log("audio permission denied");
         setIsBlocked(true);
       }
     );
@@ -32,13 +31,13 @@ const Record = () => {
   const startRecording = () => {
     setIsRecording(true);
     if (isBlocked) {
-      console.log('audio permission denied');
+      console.log("audio permission denied");
     } else {
       Mp3Recorder.start()
         .then(() => {
-          console.log('currently recording...');
+          console.log("currently recording...");
         })
-        .catch((err) => console.log('there was an error: ', err));
+        .catch((err) => console.log("there was an error: ", err));
     }
   };
 
@@ -46,7 +45,7 @@ const Record = () => {
     Mp3Recorder.stop()
       .getMp3()
       .then(([buffer, blob]) => {
-        const file = new File(buffer, 'new-speech-recording.mp3', {
+        const file = new File(buffer, "new-speech-recording.mp3", {
           type: blob.type,
           lastModified: Date.now(),
         });
@@ -62,7 +61,7 @@ const Record = () => {
         }, 1000);
       })
       .catch((err) =>
-        console.log('There was an error retreiving recorded file.')
+        console.log("There was an error retreiving recorded file.")
       );
   };
 
@@ -75,10 +74,10 @@ const Record = () => {
   const transcribeAudio = async (audio) => {
     const audioFile = testAudio;
 
-    fetch('/api')
+    fetch("/api")
       .then((response) => response.json())
-      .then((data) => console.log('Transcript: ', data))
-      .catch((err) => console.error('Error: ', err));
+      .then((data) => console.log("Transcript: ", data))
+      .catch((err) => console.error("Error: ", err));
   };
 
   ////////////////////////////////////
@@ -86,60 +85,85 @@ const Record = () => {
   const dispatch = useDispatch();
 
   const handleApi = async () => {
-    console.log('handleApi called');
+    console.log("handleApi called");
 
-    await fetch('/api')
+    await fetch("/api")
       .then((response) => response.json())
       .then((data) => {
         dispatch(updateSessionData(data));
-        console.log('datafromDB: ', data);
+        console.log("datafromDB: ", data);
       })
-      .catch((err) => console.error('Error: ', err));
+      .catch((err) => console.error("Error: ", err));
 
-     setResultsReady(true) 
-
+    setResultsReady(true);
   };
   ////////////////////////////////////
 
   return (
     <>
-      <div className="buttons">
-        {
-          <div className="currently-recording-container">
-            <h3>
-              {!isRecording ? 'Ready to start recording?' : 'Recording...'}
-            </h3>
-            <div
-              onClick={handleToggleRecording}
-              className={
-                !isRecording ? 'record-btn' : 'record-btn pulse-animation'
-              }
+      <div
+        className="border items-center text-center
+        rounded-md  md:grid grid-cols-3 w-2/3 
+      mx-auto mt-40 px-16 py-16"
+      >
+        {/* ----------------------------------------------------------- */}
+        <h3 className="text-2xl grid-cols-1">
+          {!isRecording ? "Ready to start recording?" : "Recording..."}
+        </h3>
+
+        {/* ----------------------------------------------------------- */}
+        <div className=" grid-cols-1 items-center mt-4">
+          <div
+            onClick={handleToggleRecording}
+            className={`mx-auto hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300
+            ${!isRecording ? "record-btn" : "record-btn pulse-animation"}`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="200"
+              height="200"
+              viewBox="0 0 26 26"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="200"
-                height="200"
-                viewBox="0 0 26 26"
-              >
-                <path
-                  fill="currentColor"
-                  d="M13 6.188a6.812 6.812 0 1 0 0 13.625a6.812 6.812 0 1 0 0-13.625z"
-                />
-              </svg>
-              <p>{!isRecording ? "I'm Ready" : 'Stop'}</p>
-            </div> {!resultsReady ? (<button className="btn-component-class" onClick={handleApi}>
-          Analyze</button>) : 
-            (<Link to="/results">
-              <button className="btn-component-class" >
-              Results Ready</button>
-            </Link>) }
-            
+              <path
+                fill="currentColor"
+                d="M13 6.188a6.812 6.812 0 1 0 0 13.625a6.812 6.812 0 1 0 0-13.625z"
+              />
+            </svg>
+
+            <p>{!isRecording ? "I'm Ready" : "Stop"}</p>
           </div>
-}
+        </div>
+
+        {/* ----------------------------------------------------------- */}
+        <div className="mt-4">
+          {!resultsReady ? (
+            <button
+              className="text-xl py-2 px-6 rounded-md
+            transition duration-150 ease-in-out
+            text-pink-500
+            hover:text-indigo-500"
+              onClick={handleApi}
+            >
+              Analyze
+            </button>
+          ) : (
+            <Link to="/results">
+              <button
+                className="text-xl py-2 px-6 rounded-md
+            transition duration-150 ease-in-out
+            text-pink-500
+            hover:text-indigo-500"
+              >
+                Results Ready
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
     </>
   );
 };
+
 <audio></audio>;
 
 export default Record;

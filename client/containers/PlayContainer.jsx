@@ -3,10 +3,11 @@ import Record from '../components/Record.jsx';
 
 const PlayContainer = () => {
   return (
-    <>
-      <div className="nav-container">
-        <div className="logo">
-          <h3>Speechr</h3>
+    <div className='bg-black h-100vh text-white'>
+
+      <div className="grid grid-cols-2 py-8 px-12">
+        <div className="col-span-1 flex items-center text-4xl">
+          <h3 className='mr-2'>Speechr</h3>
           <svg
             className="logo-icon"
             xmlns="http://www.w3.org/2000/svg"
@@ -20,13 +21,19 @@ const PlayContainer = () => {
             />
           </svg>
         </div>
-      </div>
-      <div className="play-container">
-        <div className="record-outer-container">
-          <Record />
+
+        <div className='col-span-1 flex justify-end text-xl'>
+          <button className='border py-2 px-4 rounded-md
+          hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300'>Logout</button>
         </div>
       </div>
-    </>
+
+
+      <div className=" items-center">
+          <Record />
+      </div>
+
+    </div>
   );
 };
 
