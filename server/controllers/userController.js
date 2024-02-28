@@ -6,29 +6,29 @@
 //     created_at TIMESTAMP DEFAULT NOW()
 // );
 
-const db = require('../models/dbModels.js');
+const User = require('../models/dbModels.js');
 
 const userController = {};
 
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
+userController.createUser = async (req, res, next) => {
+  try {
+    console.log('in user controller');
+    const { name, email, password } = req.body;
+    console.log(req.body);
 
-userController.createUser = (req, res, next) => {
-  const { username, email, password } = req.body;
+    const newUser = await new User({ name, email, password }).save();
 
-  // Hash the password before storing it in the database
-  bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) return next(err);
+    console.log(newUser);
 
-    const query = `INSERT INTO users (username, email, password) VALUES ('${username}', '${email}', '${hash}');`;
-    db.query(query)
-      .then((data) => {
-        console.log(data);
-        res.locals.user = { username, email };
-        return next();
-      })
-      .catch((err) => next(err));
-  });
+    if (newUser) {
+      res.locals.newUser = newUser;
+      return next();
+    } else {
+      res.status(403).json('Cannot create new user!');
+    }
+  } catch (err) {
+    return next(err);
+  }
 };
 
 userController.verifyUser = (req, res, next) => {
