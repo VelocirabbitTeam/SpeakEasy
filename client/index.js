@@ -4,7 +4,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
 import store from "./slices/store.js";
 import "./main.css";
-import 'flowbite';
+import "flowbite";
 
 import {
   createBrowserRouter,
@@ -19,7 +19,6 @@ import ResultContainer from "./containers/ResultContainer.jsx";
 import SignupContainer from "./Containers/SignupContainer.jsx";
 import LoginContainer from "./containers/LoginContainer.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
-
 
 const router = createBrowserRouter(
   createRoutesFromElements(
