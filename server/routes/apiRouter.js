@@ -35,6 +35,10 @@ router.get(
   }
 );
 
+router.post('/', apiController.createTranscript, (req,res) => {
+  return res.status(200).send('created transcript!');
+})
+
 // handel PATCH request to /api/
 router.patch('/', (req, res) => {
   return res.status(200).json('DATA');
