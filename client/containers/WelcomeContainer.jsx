@@ -1,7 +1,6 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import ButtonComponent from '../components/Button.jsx';
-
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ButtonComponent from "../components/Button.jsx";
 
 const WelcomeContainer = () => {
   const activeState = useSelector((state) => state.audio.render);
@@ -31,13 +30,15 @@ const WelcomeContainer = () => {
       </div>
 
       <div className="hero-container">
+
         <h1 className='text-6xl'>Your speech teacher.</h1>
         <p>Your personal speaking coach. Practice anytime, get instant feedback, and master your presentation professionalism.</p>
         <ButtonComponent to='/record' btnText='Start!' />
+
         <div className="auth-btns">
-          <ButtonComponent to='/signup' btnText='Sign up' />
+          <ButtonComponent to="/signup" btnText="Sign up" />
           <p>or</p>
-          <ButtonComponent to='/login' btnText='Login' />
+          <ButtonComponent to="/login" btnText="Login" />
         </div>
       </div>
     </div>
