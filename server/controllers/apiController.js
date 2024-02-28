@@ -3,6 +3,9 @@ const deepgram = createClient('d3b121ea821296238a901f7eddf6733cfe477c92');
 const fs = require('fs');
 const path = require('path');
 
+const Transcript = require('../models/transcriptModels.js');
+const User = require('../models/dbModels.js');
+
 const apiController = {};
 
 // calling speech-to-text api with new recordin
@@ -11,6 +14,31 @@ apiController.getTranscribeData = (req, res, next) => {
 
   // make a call to api
   return next();
+};
+
+apiController.createTranscript = async (req, res, next) => {
+  try {
+    const { userID } = req.body;
+    const findUser = await User.findById({ _id: userID }).exec();
+    if (findUser) {
+      console.log('in api controller');
+      const { content } = req.body;
+      console.log('content: ', content);
+
+      const newTranscript = await new Transcript({ user: findUser._id, content }).save();
+
+      console.log('newTranscript: ', newTranscript);
+
+      if (newTranscript) {
+        res.locals.newTranscript = newTranscript;
+        return next();
+      } else {
+        res.status(403).json('Cannot create new user!');
+      }
+    }
+  } catch (err) {
+    return next(err);
+  }
 };
 
 apiController.analyzeAudioFile = async (req, res, next) => {
