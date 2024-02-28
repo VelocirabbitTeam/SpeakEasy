@@ -31,7 +31,7 @@ function LoginContainer() {
   const handleChange = (e) => {
     setVerifyData({
       ...verifyData,
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
     console.log(verifyData);
   };
