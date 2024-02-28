@@ -1,7 +1,7 @@
-import { configureStore } from '@reduxjs/toolkit';
-import audioReducer from './reducers/audioSlice.js';
-import userReducer from './reducers/userSlice.js';
-import {api} from './apiSlices/api.js'
+import { configureStore } from "@reduxjs/toolkit";
+import audioReducer from "./reducers/audioSlice.js";
+import userReducer from "./reducers/userSlice.js";
+import { api } from "./apiSlices/api.js";
 
 const store = configureStore({
   reducer: {
@@ -9,6 +9,9 @@ const store = configureStore({
     audio: audioReducer,
     user: userReducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(api.middleware),
+  devTools: true,
 });
 
 export default store;

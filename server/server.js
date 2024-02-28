@@ -1,15 +1,15 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const path = require('path');
+const express = require("express");
+const dotenv = require("dotenv");
+const path = require("path");
 const app = express();
-const cors = require('cors');
-const connectDB = require('./config/db');
+const cors = require("cors");
+const connectDB = require("./config/db");
 
 dotenv.config();
 
 // const testRouter = require('./routes/testRouter');
-const apiRouter = require('./routes/apiRouter');
-const userRouter = require('./routes/userRouter');
+const apiRouter = require("./routes/apiRouter");
+const userRouter = require("./routes/userRouter");
 const PORT = 3000;
 
 app.use(cors());
@@ -24,10 +24,10 @@ connectDB();
 // route to all request from client database
 app.use('/api', apiRouter);
 
-app.use('/user', userRouter);
+app.use("/user", userRouter);
 
-app.get('/', (req, res) => {
-  res.status(200).sendFile(path.resolve(__dirname, '../dist/index.html'));
+app.get("/", (req, res) => {
+  res.status(200).sendFile(path.resolve(__dirname, "../dist/index.html"));
 });
 
 // catch-all route handler for any requests to an unknown route
@@ -39,9 +39,9 @@ app.use((req, res) =>
 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: "Express error handler caught unknown middleware error",
     status: 500,
-    message: { err: 'An error occurred' },
+    message: { err: "An error occurred" },
   };
   const errorObj = Object.assign({}, defaultErr, err);
   console.log(errorObj.log);
