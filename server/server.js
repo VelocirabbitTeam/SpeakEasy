@@ -1,20 +1,28 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const path = require("path");
 const app = express();
+const cors = require("cors");
+const connectDB = require("./config/db");
+
+dotenv.config();
 
 // const testRouter = require('./routes/testRouter');
 const apiRouter = require("./routes/apiRouter");
 const userRouter = require("./routes/userRouter");
 const PORT = 3000;
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+connectDB();
 
 //TEST
 // app.use('/test', testRouter);
 
 // route to all request from client database
-app.use("/api", apiRouter);
+//app.use('/api', apiRouter);
 
 app.use("/user", userRouter);
 
