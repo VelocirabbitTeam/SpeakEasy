@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import testAudio from '../assets/audio-test.mp3';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { updateSessionData } from '../userSlice.js';
+import { updateSessionData } from '../slices/reducers/userSlice.js';
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -13,6 +13,8 @@ const Record = () => {
   const [isBlocked, setIsBlocked] = useState(true);
   const [mp3File, setMp3File] = useState();
   const [resultsReady, setResultsReady] = useState(false);
+
+  
   useEffect(() => {
     navigator.getUserMedia(
       { audio: true },
