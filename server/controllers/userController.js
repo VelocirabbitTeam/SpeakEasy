@@ -14,11 +14,8 @@ userController.createUser = async (req, res, next) => {
   try {
     console.log('in user controller');
     const { name, email, password } = req.body;
-    console.log(req.body);
 
     const newUser = await new User({ name, email, password }).save();
-
-    console.log(newUser);
 
     if (newUser) {
       res.locals.newUser = newUser;
