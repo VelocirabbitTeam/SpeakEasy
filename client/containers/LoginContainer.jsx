@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginContainer() {
   const [verifyData, setVerifyData] = useState({
@@ -70,14 +71,14 @@ function LoginContainer() {
               Helping Mankind reach full potential
             </h1>
             <p className="mb-6 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-              Here at SpeakEazy we leverage talent, technology, and innovation
-              to help improve flow of communication.
+              Here at SpeakEasy we leverage your unleashed talent, technology,
+              and innovation to help improve flow of communication.
             </p>
           </div>
           <div>
             <div className="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Sign in to SpeakEazy
+                Sign in to SpeakEasy
               </h2>
               <form className="mt-8 space-y-6" action="#">
                 <div>
@@ -131,24 +132,28 @@ function LoginContainer() {
                       Remember this device
                     </label>
                   </div>
-                  <a
+                  {/**Forgot Password */}
+                  {/* <Link
                     href="#"
                     className="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
                   >
-                    Lost Password?
-                  </a>
+                    Forgot Password?
+                  </Link> */}
                 </div>
                 <button
                   type="submit"
-                  className="w-full px-5 py-3 text-base font-medium text-center text-white bg-black rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full px-5 py-3 text-base font-medium text-center text-white bg-black rounded-lg hover:bg-gray-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Login to your account
                 </button>
                 <div className="text-sm font-medium text-gray-900 dark:text-white">
                   Not registered yet?{" "}
-                  <a className="text-blue-600 hover:underline dark:text-blue-500">
+                  <Link
+                    to="/signup"
+                    className="text-blue-600 hover:underline dark:text-blue-500"
+                  >
                     Create account
-                  </a>
+                  </Link>
                 </div>
               </form>
             </div>
