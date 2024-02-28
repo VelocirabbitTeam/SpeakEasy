@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-function SignupContainer() {
+function Signup() {
   const [loginData, setLoginData] = useState({
     username: "",
     email: "",
@@ -43,50 +43,42 @@ function SignupContainer() {
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
           <div className="flex flex-col justify-center space-y-6">
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-              Flowbite
+              SpeakEazy
             </h1>
             <ul className="list-inside list-disc space-y-4">
               <li className="flex items-center">
                 <span className="text-blue-600 dark:text-blue-500 mr-2"></span>
                 Get started quickly
                 <p className="text-lg text-gray-500 dark:text-gray-400">
-                  Integrate with developer-friendly APIs or choose low-code.
+                  Practice anytime, anywhere, at a pace that suits you.
                 </p>
               </li>
               <li className="flex items-center">
                 <span className="text-blue-600 dark:text-blue-500 mr-2"></span>
                 Support any business model
                 <p className="text-lg text-gray-500 dark:text-gray-400">
-                  Host code that you don't want to share with the world in
-                  private.
+                  Mastery of seamless flow and effective communication.
                 </p>
               </li>
               <li className="flex items-center">
                 <span className="text-blue-600 dark:text-blue-500 mr-2"></span>
                 Join millions of businesses
                 <p className="text-lg text-gray-500 dark:text-gray-400">
-                  Flowbite is trusted by ambitious startups and enterprises of
-                  every size.
+                  SpeakEazy is trusted by organizations of every size with
+                  ambitious goals.
                 </p>
               </li>
             </ul>
-
-            <Link
-              href="#"
-              className="text-blue-600 hover:underline font-medium text-lg inline-flex items-center"
-            >
-              Read more about our app
-            </Link>
           </div>
 
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+          <div className="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Create and account
             </h1>
             <form className="space-y-4 md:space-y-6" action="#">
               <div>
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Your email
@@ -102,7 +94,7 @@ function SignupContainer() {
               </div>
               <div>
                 <label
-                  for="password"
+                  htmlFor="password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Password
@@ -118,7 +110,7 @@ function SignupContainer() {
               </div>
               <div>
                 <label
-                  for="confirm-password"
+                  htmlFor="confirm-password"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Confirm password
@@ -144,7 +136,7 @@ function SignupContainer() {
                 </div>
                 <div className="ml-3 text-sm">
                   <label
-                    for="terms"
+                    htmlFor="terms"
                     className="font-light text-gray-500 dark:text-gray-300"
                   >
                     I accept the{" "}
@@ -159,7 +151,7 @@ function SignupContainer() {
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="w-full text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
                 Create an account
               </button>
@@ -180,4 +172,4 @@ function SignupContainer() {
   );
 }
 
-export default SignupContainer;
+export default Signup;
