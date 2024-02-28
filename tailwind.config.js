@@ -8,6 +8,9 @@ module.exports = {
 
   theme: {
     extend: {
+      height: {
+        "100vh": "100vh",
+      },
       colors: {
         primary: {
           50: "#eff6ff",
