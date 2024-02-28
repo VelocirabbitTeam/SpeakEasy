@@ -1,10 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userData: localStorage.getItem('userData') 
-  ? JSON.parse(localStorage.getItem('userData'))
-  : null,
-  sessionData: []
+  userData: localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData"))
+    : null,
+  sessionData: [],
 };
 
 // const initialState = {
@@ -13,19 +13,20 @@ const initialState = {
 // };
 
 const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState,
   reducers: {
     setCredential: (state, action) => {
       // state.isLoggedIn = true;
       //reassign initialState
-      state.userData = action.payload
+      state.userData = action.payload;
       //save userData in localStorage
-      state.userData = localStorage.setItem('userData', JSON.stringify(action.payload))
+      // state.userData =
+      localStorage.setItem("userData", JSON.stringify(action.payload));
     },
     logout: (state, action) => {
       state.userData = null;
-      localStorage.clear()
+      localStorage.clear();
     },
     updateSessionData: (state, action) => {
       state.sessionData.push(action.payload);
@@ -33,5 +34,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { setCredential, logout, updateSessionData} = userSlice.actions;
+export const { setCredential, logout, updateSessionData } = userSlice.actions;
 export default userSlice.reducer;

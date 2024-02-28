@@ -1,41 +1,59 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSigninMutation } from "../slices/apiSlices/userApi";
+import { setCredential } from "../slices/reducers/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function LoginContainer() {
+  const [signin] = useSigninMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [verifyData, setVerifyData] = useState({
     email: "",
     password: "",
   });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    //send data to server
-    fetch("/user/verify", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(verifyData),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Success:", data);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   //send data to server
+  //   fetch("/user/verify", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(verifyData),
+  //   })
+  //     .then((response) => {
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log("Success:", data);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error:", error);
+  //     });
+  // };
 
-  const handleChange = (e) => {
+  const handleChange = (event) => {
+    const { email, password } = event.target.value;
+
     setVerifyData({
       ...verifyData,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     });
-    console.log(verifyData);
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await signin(verifyData).unwrap();
+      dispatch(setCredential(res));
+      navigate("/play");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     // <form id="loginForm" onSubmit={handleSubmit}>
     //   <div>
@@ -82,7 +100,7 @@ function LoginContainer() {
                 Sign in to SpeakEasy
               </h2>
               {/* Form starts from here */}
-              <form className="mt-8 space-y-6">
+              <form onSubmit={submitHandler} className="mt-8 space-y-6">
                 <div>
                   <label
                     htmlFor="email"
@@ -127,7 +145,6 @@ function LoginContainer() {
                       name="remember"
                       type="checkbox"
                       className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                      required
                     />
                   </div>
                   <div className="ms-3 text-sm">

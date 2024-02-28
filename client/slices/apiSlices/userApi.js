@@ -12,12 +12,12 @@ export const userApiSlice = api.injectEndpoints({
     }),
     signin: builder.mutation({
       query: (data) => ({
-        url: `${USER_URL}/signin`,
+        url: `${USER_URL}/signIn`,
         method: "POST",
         body: data,
       }),
     }),
   }),
 });
-
+ 
 export const { useSigninMutation, useSignupMutation } = userApiSlice;

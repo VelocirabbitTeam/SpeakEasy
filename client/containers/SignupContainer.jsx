@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useSignupMutation } from "../slices/apiSlices/userApi";
 import { Link } from "react-router-dom";
+import { setCredential } from "../slices/reducers/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function SignupContainer() {
   const [signup] = useSignupMutation();
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     name: "",
     email: "",
@@ -44,6 +48,8 @@ function SignupContainer() {
     e.preventDefault();
     try {
       const res = await signup(loginData).unwrap();
+      dispatch(setCredential(res));
+      navigate("/play");
     } catch (err) {
       console.log(err);
     }
