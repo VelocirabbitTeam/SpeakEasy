@@ -14,30 +14,38 @@ const router = express.Router();
 
 // handel POST request to /api/
 // this request should call speech-to-text api with new recording and save the returned data to the database
+// router.get(
+//   '/',
+//   apiController.analyzeAudioFile,
+//   dbController.postTranscript,
+//   dbController.getTranscriptId,
+//   dbController.insertWords,
+//   dataController.wordCountConfidence,
+//   dataController.analyzeFluency,
+//   dbController.insertAnalyzedData,
+//   (req, res) => {
+//     return res.status(200).json({
+//       wordCount: res.locals.wordCount,
+//       wordPerSec: res.locals.wordPerSec,
+//       averagePauseDuration: res.locals.averagePauseDuration,
+//       totalPauses: res.locals.totalPauses,
+//       wordsWithPauses: res.locals.wordsWithPauses,
+//       transcripts: res.locals.transcript,
+//     });
+//   }
+// );
+
 router.get(
   '/',
-  apiController.analyzeAudioFile,
-  dbController.postTranscript,
-  dbController.getTranscriptId,
-  dbController.insertWords,
-  dataController.wordCountConfidence,
-  dataController.analyzeFluency,
-  dbController.insertAnalyzedData,
+  apiController.getTranscript,
   (req, res) => {
-    return res.status(200).json({
-      wordCount: res.locals.wordCount,
-      wordPerSec: res.locals.wordPerSec,
-      averagePauseDuration: res.locals.averagePauseDuration,
-      totalPauses: res.locals.totalPauses,
-      wordsWithPauses: res.locals.wordsWithPauses,
-      transcripts: res.locals.transcript,
-    });
+    return res.status(200).json(res.locals.transcript);
   }
 );
 
 router.post('/', apiController.createTranscript, (req,res) => {
   return res.status(200).send('created transcript!');
-})
+});
 
 // handel PATCH request to /api/
 router.patch('/', (req, res) => {

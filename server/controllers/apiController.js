@@ -33,7 +33,32 @@ apiController.createTranscript = async (req, res, next) => {
         res.locals.newTranscript = newTranscript;
         return next();
       } else {
-        res.status(403).json('Cannot create new user!');
+        res.status(403).json('Cannot create new transcript!');
+      }
+    }
+  } catch (err) {
+    return next(err);
+  }
+};
+
+apiController.getTranscript = async (req, res, next) => {
+  try {
+    const { userID } = req.body;
+    const findUser = await User.findById({ _id: userID }).exec();
+    if (findUser) {
+      console.log('in api controller');
+      const { content } = req.body;
+      console.log('content: ', content);
+
+      const transcript = await Transcript.findOne({ user: findUser._id });
+
+      console.log('transcript: ', transcript);
+
+      if (transcript) {
+        res.locals.transcript = transcript;
+        return next();
+      } else {
+        res.status(403).json('Cannot get transcript!');
       }
     }
   } catch (err) {
