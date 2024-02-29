@@ -3,7 +3,7 @@ import React from 'react';
 const CurrentSession = ({ currSession }) => {
   return (
     <div>
-      <h1 className='results-header'>Current Session</h1>
+      <h1 className='text-4xl'>Current Session</h1>
       {currSession ? (
         <>
           <div className="results-container">
