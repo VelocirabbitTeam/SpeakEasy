@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   render: 1, // => 1,2,3
@@ -6,14 +6,14 @@ const initialState = {
 };
 
 const audioSlice = createSlice({
-  name: 'audio',
+  name: "audio",
   initialState,
   reducers: {
     setRender: (state, action) => {
-      console.log('setState hit: ', state, action.payload);
+      console.log("setState hit: ", state, action.payload);
       state.render = action.payload;
-    }
-  }
+    },
+  },
 });
 
 // export default reducers;

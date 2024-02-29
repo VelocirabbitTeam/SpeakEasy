@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 
-const apiController = require('../controllers/apiController');
-const dbController = require('../controllers/dbController');
-const dataController = require('../controllers/dataController');
+const apiController = require("../controllers/apiController");
+const dbController = require("../controllers/dbController");
+const dataController = require("../controllers/dataController");
 
 const router = express.Router();
 
@@ -35,26 +35,22 @@ const router = express.Router();
 //   }
 // );
 
-router.get(
-  '/',
-  apiController.getTranscript,
-  (req, res) => {
-    return res.status(200).json(res.locals.transcript);
-  }
-);
+router.get("/:userID", apiController.getTranscript, (req, res) => {
+  return res.status(200).json(res.locals.transcript);
+});
 
-router.post('/', apiController.createTranscript, (req,res) => {
-  return res.status(200).send('created transcript!');
+router.post("/", apiController.createTranscript, (req, res) => {
+  return res.status(200).send("created transcript!");
 });
 
 // handel PATCH request to /api/
-router.patch('/', (req, res) => {
-  return res.status(200).json('DATA');
+router.patch("/", (req, res) => {
+  return res.status(200).json("DATA");
 });
 
 // handel DELETE request to /api/
-router.delete('/', (req, res) => {
-  return res.status(200).json('DATA');
+router.delete("/", (req, res) => {
+  return res.status(200).json("DATA");
 });
 
 module.exports = router;
