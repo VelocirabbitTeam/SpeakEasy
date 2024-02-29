@@ -4,7 +4,7 @@ import Socket from '../components/Socket.jsx';
 
 const PlayContainer = () => {
   return (
-    <div className='bg-black h-100vh text-white'>
+    <div className='bg-black min-h-screen text-white'>
 
       <div className="grid grid-cols-2 py-8 px-12">
         <div className="col-span-1 flex items-center text-4xl">

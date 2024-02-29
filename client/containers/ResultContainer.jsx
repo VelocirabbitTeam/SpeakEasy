@@ -78,9 +78,9 @@ const ResultContainer = () => {
             className="w-full flex justify-center
           fixed bottom-0 right-0 z-20 py-6
           bg-white opacity-90
-          text-black
-          hover:text-white
-          hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300"
+          text-white
+          hover:text-black font-bold text-2xl
+          bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300"
           >
             <Link to="/play">
               <button className="text-2xl">
