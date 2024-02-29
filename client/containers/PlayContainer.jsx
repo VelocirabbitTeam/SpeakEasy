@@ -1,4 +1,5 @@
 import React from "react";
+import Socket from "../components/Socket.jsx";
 import Record from "../components/Record.jsx";
 import { logout } from "../slices/reducers/userSlice.js";
 import { useDispatch } from "react-redux";
@@ -43,7 +44,8 @@ const PlayContainer = () => {
       </div>
 
       <div className=" items-center">
-        <Record />
+        {/* <Record /> */}
+        <Socket />
       </div>
     </div>
   );
