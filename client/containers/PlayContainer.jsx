@@ -3,14 +3,11 @@ import Record from "../components/Record.jsx";
 import { logout } from "../slices/reducers/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import WebSocket from "../components/WebSocket.jsx";
+import WebSocketCom from "../components/WebSocketCom.jsx";
 
 const PlayContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userData = useSelector((state) => state.user);
-  const userID = userData.userData.user_id;
-  // console.log(`userID:`, userID);
 
   const logOutHandler = () => {
     dispatch(logout());
@@ -50,7 +47,7 @@ const PlayContainer = () => {
 
       <div className=" items-center">
         {/* <Record /> */}
-        <WebSocket />
+        <WebSocketCom />
       </div>
     </div>
   );

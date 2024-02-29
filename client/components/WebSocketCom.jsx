@@ -1,19 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useSaveTranscriptMutation } from "../slices/apiSlices/audioApi";
 
-// export default function WebSocket() {
-export default function AudioRecorder() {
+export default function WebSocketCom() {
   const [initialized, setInitialized] = useState(false);
   const [re, setRe] = useState(false);
-  const [transcript, setTranscript] = useState("");
-
+  const [transcript1, setTranscript] = useState("");
+  const userData = useSelector((state) => state.user);
+  const userID = userData.userData.user_id;
+  // console.log(`userID:`, userID);
   const DEEPGRAM_API_KEY_2 = process.env.REACT_APP_DEEPGRAM_API_KEY_2;
+
+  const [saveTranscript] = useSaveTranscriptMutation();
 
   let socket = "";
   let mediaRecorder;
   useEffect(() => {
     console.log("re", re);
   }, [re]);
+
+  useEffect(() => {
+    console.log("transcript1", transcript1);
+  }, [transcript1]);
 
   async function initialize() {
     setRe(true);
@@ -56,9 +65,12 @@ export default function AudioRecorder() {
         const received = JSON.parse(message.data);
         const transcript = received.channel.alternatives[0].transcript;
         if (transcript && received.is_final) {
-          console.log(transcript);
-          document.querySelector("#transcript").textContent += transcript + " ";
-          // setTranscript(textContent);
+          // console.log(transcript);
+          const entireTranscript = (document.querySelector(
+            "#transcript"
+          ).textContent += transcript + " ");
+          // setTranscript(transcript1 + transcript + " ");
+          setTranscript(entireTranscript);
         }
       };
 
@@ -86,10 +98,6 @@ export default function AudioRecorder() {
       console.error("Error initializing:", error);
     }
   }
-
-  // useEffect(() => {
-  //   console.log(transcript);
-  // }, [transcript]);
 
   return (
     <div className=" mx-28 mt-10">
