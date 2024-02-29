@@ -4,8 +4,17 @@ import CurrentSession from "../components/CurrentSession.jsx";
 import SessionTrends from "../components/SessionTrends.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../slices/reducers/userSlice.js";
+import { useNavigate } from "react-router-dom";
 
 const ResultContainer = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logOutHandler = () => {
+    dispatch(logout());
+    navigate("/login");
+  };
   const { isLoggedIn, sessionData } = useSelector((state) => state.user);
 
   const currSession = sessionData[sessionData.length - 1];
@@ -22,7 +31,6 @@ const ResultContainer = () => {
     totalPauses.push(sessionData[i].totalPauses);
   }
 
-  const dispatch = useDispatch();
   // useEffect(() => {
   //   fetch()
   // });
@@ -50,6 +58,7 @@ const ResultContainer = () => {
 
           <div className="col-span-1 flex justify-end text-xl">
             <button
+              onClick={logOutHandler}
               className="border px-6  rounded-md h-14
     hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300"
             >
@@ -72,8 +81,6 @@ const ResultContainer = () => {
           <SessionTrends dataArr={avgPauseDur} title="avgPauseDur" />
           <SessionTrends dataArr={totalPauses} title="totalPauses" />
 
-
-
           <div
             className="w-full flex justify-center
           fixed bottom-0 right-0 z-20 py-6
@@ -83,9 +90,7 @@ const ResultContainer = () => {
           hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300"
           >
             <Link to="/play">
-              <button className="text-2xl">
-                Record Again!
-              </button>
+              <button className="text-2xl">Record Again!</button>
             </Link>
           </div>
         </div>
