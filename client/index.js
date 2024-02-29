@@ -31,7 +31,7 @@ const router = createBrowserRouter(
       {/* YOU NEED LOGIN AND SIGNUP TO ACCESS THIS STUFF */}
       <Route path="" element={<PrivateRoute />}>
         <Route path="/play" element={<PlayContainer />} />
-        <Route path="/results" element={<ResultContainer />} />
+        <Route path="/results/:id" element={<ResultContainer />} />
       </Route>
     </Route>
   )

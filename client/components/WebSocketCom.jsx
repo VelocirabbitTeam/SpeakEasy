@@ -107,21 +107,7 @@ export default function WebSocketCom() {
     <div className=" mx-28 mt-10">
       {/* CONTENT  */}
       <div className="border h-96 rounded-xl text-4xl overflow-scroll px-16 pt-8 leading-loose">
-        <p id="transcript">
-          {/* Your personal speaking coach. Practice anytime, get instant feedback,
-          and master your presentation professionalism. Your personal speaking
-          coach. Practice anytime, get instant feedback, and master your
-          presentation professionalism. Your personal speaking coach. Practice
-          anytime, get instant feedback, and master your presentation
-          professionalism. Your personal speaking coach. Practice anytime, get
-          instant feedback, and master your presentation professionalism. Your
-          personal speaking coach. Practice anytime, get instant feedback, and
-          master your presentation professionalism. Your personal speaking
-          coach. Practice anytime, get instant feedback, and master your
-          presentation professionalism. Your personal speaking coach. Practice
-          anytime, get instant feedback, and master your presentation
-          professionalism. */}
-        </p>
+        <p id="transcript"></p>
       </div>
 
       <div className="flex justify-center">
@@ -182,7 +168,7 @@ export default function WebSocketCom() {
           </button> */}
 
           {/* ANALYZE BUTTON  */}
-          <Link to="/results">
+          <Link to={`/results/${userID}`}>
             <button
               onClick={saveTranscriptHandler}
               className="border-2 mx-auto text-gray-950 font-bold py-3 mt-6 px-12
