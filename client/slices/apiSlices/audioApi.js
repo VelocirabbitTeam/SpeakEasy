@@ -9,7 +9,13 @@ export const audioApi = api.injectEndpoints({
         body: data,
       }),
     }),
+    getTranscript: builder.query({
+      query: (id) => ({
+        url: `/api/${id}`,
+        method: `GET`,
+      }),
+    }),
   }),
 });
 
-export const { useSaveTranscriptMutation } = audioApi;
+export const { useSaveTranscriptMutation, useGetTranscriptQuery } = audioApi;

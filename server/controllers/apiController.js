@@ -1,10 +1,10 @@
-const { createClient } = require('@deepgram/sdk');
-const deepgram = createClient('d3b121ea821296238a901f7eddf6733cfe477c92');
-const fs = require('fs');
-const path = require('path');
+const { createClient } = require("@deepgram/sdk");
+const deepgram = createClient("d3b121ea821296238a901f7eddf6733cfe477c92");
+const fs = require("fs");
+const path = require("path");
 
-const Transcript = require('../models/transcriptModels.js');
-const User = require('../models/dbModels.js');
+const Transcript = require("../models/transcriptModels.js");
+const User = require("../models/dbModels.js");
 
 const apiController = {};
 
@@ -21,22 +21,22 @@ apiController.createTranscript = async (req, res, next) => {
     const { userID } = req.body;
     const findUser = await User.findById({ _id: userID }).exec();
     if (findUser) {
-      console.log('in api controller');
+      console.log("in api controller");
       const { content } = req.body;
-      console.log('content: ', content);
+      console.log("content: ", content);
 
       const newTranscript = await new Transcript({
         user: findUser._id,
         content,
       }).save();
 
-      console.log('newTranscript: ', newTranscript);
+      console.log("newTranscript: ", newTranscript);
 
       if (newTranscript) {
         res.locals.newTranscript = newTranscript;
         return next();
       } else {
-        res.status(403).json('Cannot create new transcript!');
+        res.status(403).json("Cannot create new transcript!");
       }
     }
   } catch (err) {
@@ -45,23 +45,25 @@ apiController.createTranscript = async (req, res, next) => {
 };
 
 apiController.getTranscript = async (req, res, next) => {
+  console.log(`inside getTranscript`);
   try {
-    const { userID } = req.body;
+    const userID = req.params.userID;
     const findUser = await User.findById({ _id: userID }).exec();
+    console.log(findUser);
     if (findUser) {
-      console.log('in api controller');
+      console.log("in api controller");
       //const { content } = req.body;
       //console.log('content: ', content);
 
       const transcript = await Transcript.find({ user: findUser._id }).exec();
 
-      console.log('transcript: ', transcript);
+      console.log("transcript: ", transcript);
 
       if (transcript) {
         res.locals.transcript = transcript;
         return next();
       } else {
-        res.status(403).json('Cannot get transcript!');
+        res.status(403).json("Cannot get transcript!");
       }
     }
   } catch (err) {
@@ -71,18 +73,18 @@ apiController.getTranscript = async (req, res, next) => {
 
 apiController.analyzeAudioFile = async (req, res, next) => {
   const audio = fs.readFileSync(
-    path.join(__dirname, '../../client/assets/fake-it-till-u-make-it.mp3')
+    path.join(__dirname, "../../client/assets/fake-it-till-u-make-it.mp3")
   );
   //post transcribe data to database
   try {
     const { result, error } = await deepgram.listen.prerecorded.transcribeFile(
       audio,
       {
-        model: 'nova-2',
+        model: "nova-2",
         smart_format: true,
-        language: 'en-US',
+        language: "en-US",
         filler_words: true,
-        puctuate: 'verbatim',
+        puctuate: "verbatim",
       }
     );
     res.locals.transcript =
@@ -100,7 +102,7 @@ apiController.analyzeAudioFile = async (req, res, next) => {
 
     return next();
   } catch (err) {
-    console.error('Error: ', err);
+    console.error("Error: ", err);
     return next(err);
   }
 };

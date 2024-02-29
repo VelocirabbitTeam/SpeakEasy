@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../components/Button.jsx";
 import CurrentSession from "../components/CurrentSession.jsx";
 import SessionTrends from "../components/SessionTrends.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { logout } from "../slices/reducers/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Result from "../components/Result.jsx";
 import { GiJourney } from "react-icons/gi";
 import { CurTransAna } from "../components/CurTransAna.jsx";
+import { useGetTranscriptQuery } from "../slices/apiSlices/audioApi.js";
 
 const ResultContainer = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,14 @@ const ResultContainer = () => {
     navigate("/login");
   };
   const { isLoggedIn, sessionData } = useSelector((state) => state.user);
+
+  const { id } = useParams();
+
+  const { data, isLoading } = useGetTranscriptQuery(id);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data, isLoading]);
 
   const currSession = sessionData[sessionData.length - 1];
 
@@ -112,7 +121,6 @@ const ResultContainer = () => {
       </Link> */}
 
       {/* RECORD BUTTON---------------------------------------------------- */}
-
     </>
   );
 };
