@@ -7,7 +7,7 @@ export const CurTransAna = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
         <div className="mx-auto max-w-2xl lg:text-center">
           <p
-            className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl
+            className="mt-2 text-4xl font-bold tracking-tight sm:text-4xl
           text-indigo-200"
           >
             Your Latest Transcript Analyse

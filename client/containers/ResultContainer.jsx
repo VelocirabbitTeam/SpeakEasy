@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import Result from "../components/Result.jsx";
 import { GiJourney } from "react-icons/gi";
 import { CurTransAna } from "../components/CurTransAna.jsx";
+import History from '../components/History.jsx'
+import { FaHistory } from "react-icons/fa";
 
 const ResultContainer = () => {
   const dispatch = useDispatch();
@@ -81,7 +83,8 @@ const ResultContainer = () => {
           <CurTransAna />
 
           {/* RESULT --------------------------------------------------- */}
-          <div className="text-4xl mt-32 mb-14 flex mx-auto justify-center">
+          <div className="text-4xl mt-32 mb-14 flex mx-auto justify-center
+          text-indigo-200">
             Your Journey so far
             <GiJourney className="ml-4" />{" "}
           </div>
@@ -90,6 +93,18 @@ const ResultContainer = () => {
           <SessionTrends dataArr={avgPauseDur} title="avgPauseDur" />
           <SessionTrends dataArr={totalPauses} title="totalPauses" /> */}
           <Result />
+
+
+          {/* CURRENT TRANSCRIPT ANALYSE --------------------------------------------------- */}
+          <div className="text-4xl mt-32 mb-14 flex mx-auto justify-center
+          text-indigo-200">
+            History Tracker
+            <FaHistory className="ml-4" />{" "}
+          </div>
+          
+          <History />
+
+
 
           {/* RECORD BUTTON---------------------------------------------------- */}
           <div
@@ -111,7 +126,7 @@ const ResultContainer = () => {
         <button className="record-btn data-container-btn">Record Again!</button>
       </Link> */}
 
-      {/* RECORD BUTTON---------------------------------------------------- */}
+      {/*---------------------------------------------------- */}
 
     </>
   );
