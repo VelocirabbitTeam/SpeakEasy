@@ -4,6 +4,7 @@ import CurrentSession from "../components/CurrentSession.jsx";
 import SessionTrends from "../components/SessionTrends.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Result from "../components/Result.jsx";
 
 const ResultContainer = () => {
   const { isLoggedIn, sessionData } = useSelector((state) => state.user);
@@ -30,6 +31,7 @@ const ResultContainer = () => {
   return (
     <>
       <div className="bg-black text-white relative overflow-scroll min-h-screen">
+
         {/* ---------------------------------------------------- */}
         <div className="grid grid-cols-2 py-8 px-16">
           <div className="col-span-1 flex items-center text-4xl">
@@ -59,21 +61,25 @@ const ResultContainer = () => {
         </div>
 
         {/* ---------------------------------------------------- */}
-        <div className="px-28 pt-10">
-          <CurrentSession
+        <div className="px-28 text-center pt-2">
+          {/* <CurrentSession
             className="curr-session-div"
             currSession={currSession}
-          />
+          /> */}
 
           {/* ---------------------------------------------------- */}
-          <h1 className="text-4xl mt-6">Session Trends</h1>
-          <SessionTrends dataArr={wordCountTrends} title="wordCountTrends" />
+          <h1 className="text-4xl mb-14">Analyze Result</h1>
+          {/* <SessionTrends dataArr={wordCountTrends} title="wordCountTrends" />
           <SessionTrends dataArr={wordPerSec} title="wordPerSec" />
           <SessionTrends dataArr={avgPauseDur} title="avgPauseDur" />
-          <SessionTrends dataArr={totalPauses} title="totalPauses" />
+          <SessionTrends dataArr={totalPauses} title="totalPauses" /> */}
 
 
+          {/* RESULT --------------------------------------------------- */}
+          <Result />
 
+
+          {/* RECORD BUTTON---------------------------------------------------- */}
           <div
             className="w-full flex justify-center
           fixed bottom-0 right-0 z-20 py-6
@@ -100,33 +106,4 @@ const ResultContainer = () => {
 
 export default ResultContainer;
 
-{
-  /* <div className="bg-black h-100vh text-white">
-  <div className="grid grid-cols-2 py-8 px-12">
-    <div className="col-span-1 flex items-center text-4xl">
-      <h3 className="mr-2">Speechr</h3>
-      <svg
-        className="logo-icon"
-        xmlns="http://www.w3.org/2000/svg"
-        width="200"
-        height="200"
-        viewBox="0 0 20 20"
-      >
-        <path
-          fill="currentColor"
-          d="M18 0H2a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-4 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 14 4zM6 4a1.5 1.5 0 1 1-1.5 1.5A1.5 1.5 0 0 1 6 4zm4 8c-2.61 0-4.83-.67-5.65-3h11.3c-.82 2.33-3.04 3-5.65 3z"
-        />
-      </svg>
-    </div>
 
-    <div className="col-span-1 flex justify-end text-xl">
-      <button
-        className="border py-2 px-4 rounded-md
-    hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300"
-      >
-        Logout
-      </button>
-    </div>
-  </div>
-</div>; */
-}
