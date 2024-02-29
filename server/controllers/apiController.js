@@ -25,7 +25,10 @@ apiController.createTranscript = async (req, res, next) => {
       const { content } = req.body;
       console.log('content: ', content);
 
-      const newTranscript = await new Transcript({ user: findUser._id, content }).save();
+      const newTranscript = await new Transcript({
+        user: findUser._id,
+        content,
+      }).save();
 
       console.log('newTranscript: ', newTranscript);
 
@@ -47,10 +50,10 @@ apiController.getTranscript = async (req, res, next) => {
     const findUser = await User.findById({ _id: userID }).exec();
     if (findUser) {
       console.log('in api controller');
-      const { content } = req.body;
-      console.log('content: ', content);
+      //const { content } = req.body;
+      //console.log('content: ', content);
 
-      const transcript = await Transcript.findOne({ user: findUser._id });
+      const transcript = await Transcript.find({ user: findUser._id }).exec();
 
       console.log('transcript: ', transcript);
 
