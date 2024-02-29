@@ -1,5 +1,6 @@
 import React from 'react';
 import Record from '../components/Record.jsx';
+import Socket from '../components/Socket.jsx';
 
 const PlayContainer = () => {
   return (
@@ -30,7 +31,8 @@ const PlayContainer = () => {
 
 
       <div className=" items-center">
-          <Record />
+          {/* <Record /> */}
+          <Socket />
       </div>
 
     </div>
