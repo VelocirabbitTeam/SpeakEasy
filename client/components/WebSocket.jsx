@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Socket() {
+export default function WebSocket() {
   const [initialized, setInitialized] = useState(false);
   const [re, setRe] = useState(false);
 

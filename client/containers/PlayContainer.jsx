@@ -1,6 +1,6 @@
 import React from 'react';
 import Record from '../components/Record.jsx';
-import Socket from '../components/Socket.jsx';
+import WebSocket from '../components/WebSocket.jsx';
 
 const PlayContainer = () => {
   return (
@@ -32,7 +32,7 @@ const PlayContainer = () => {
 
       <div className=" items-center">
           {/* <Record /> */}
-          <Socket />
+          <WebSocket />
       </div>
 
     </div>
