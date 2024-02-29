@@ -3,27 +3,26 @@ import { IoMdTime } from "react-icons/io";
 
 export const CurTransAna = () => {
   return (
-    <div class="pt-12 ">
-      <div class="mx-auto max-w-7xl px-6 lg:px-8 ">
-
-        <div class="mx-auto max-w-2xl lg:text-center">
-          <p class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl
-          text-indigo-200">
+    <div className="pt-12 ">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <p
+            className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl
+          text-indigo-200"
+          >
             Your Latest Transcript Analyse
           </p>
         </div>
 
-        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
-
-          <dl class=" grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            <div class="relative mr-12">
-
-              <dt class="text-xl font-semibold leading-7 text-gray-300">
-{/* 
-                <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-6xl">
+          <dl className=" grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+            <div className="relative mr-12">
+              <dt className="text-xl font-semibold leading-7 text-gray-300">
+                {/* 
+                <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
                  bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-300">
                   <svg
-                    class="h-6 w-6 text-white"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -39,18 +38,17 @@ export const CurTransAna = () => {
                 </div> */}
                 Words Repeated Frequently
               </dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">
+              <dd className="mt-2 text-base leading-7 text-gray-600">
                 EasySpeak
               </dd>
             </div>
 
-
-            <div class="relative ml-12">
-              <dt class="text-xl font-semibold leading-7 text-gray-300">
-                {/* <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg  
+            <div className="relative ml-12">
+              <dt className="text-xl font-semibold leading-7 text-gray-300">
+                {/* <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg  
                  bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-300">
                  <svg
-                    class="h-6 w-6 text-white"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -66,18 +64,17 @@ export const CurTransAna = () => {
                 </div> */}
                 Duration
               </dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">
+              <dd className="mt-2 text-base leading-7 text-gray-600">
                 2 minutes
               </dd>
             </div>
 
-
-            <div class="relative mr-12">
-              <dt class="text-xl font-semibold leading-7 text-gray-300">
-                {/* <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
+            <div className="relative mr-12">
+              <dt className="text-xl font-semibold leading-7 text-gray-300">
+                {/* <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
                  bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-300">
                  <svg
-                    class="h-6 w-6 text-white"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -93,19 +90,18 @@ export const CurTransAna = () => {
                 </div> */}
                 Simple queues
               </dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">
+              <dd className="mt-2 text-base leading-7 text-gray-600">
                 Quisque est vel vulputate cursus. Risus proin diam nunc commodo.
                 Lobortis auctor congue commodo diam neque.
               </dd>
             </div>
 
-
-            <div class="relative ml-12">
-              <dt class="text-xl font-semibold leading-7 text-gray-300">
-                {/* <div class="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
+            <div className="relative ml-12">
+              <dt className="text-xl font-semibold leading-7 text-gray-300">
+                {/* <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg 
                  bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-300">
                  <svg
-                    class="h-6 w-6 text-white"
+                    className="h-6 w-6 text-white"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke-width="1.5"
@@ -121,7 +117,7 @@ export const CurTransAna = () => {
                 </div> */}
                 Time
               </dt>
-              <dd class="mt-2 text-base leading-7 text-gray-600">
+              <dd className="mt-2 text-base leading-7 text-gray-600">
                 Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis
                 aliquet hac quis. Id hac maecenas ac donec pharetra eget.
               </dd>

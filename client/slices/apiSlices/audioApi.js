@@ -1,9 +1,15 @@
 import { api } from "./api";
 
 export const audioApi = api.injectEndpoints({
-    endpoints: (builder) => ({
-        
-    })
-})
+  endpoints: (builder) => ({
+    saveTranscript: builder.mutation({
+      query: (data) => ({
+        url: `/api/`,
+        method: `POST`,
+        body: data,
+      }),
+    }),
+  }),
+});
 
-const {} = audioApi;
+export const { useSaveTranscriptMutation } = audioApi;

@@ -21,7 +21,6 @@ const userSlice = createSlice({
       //reassign initialState
       state.userData = action.payload;
       //save userData in localStorage
-      // state.userData =
       localStorage.setItem("userData", JSON.stringify(action.payload));
     },
     logout: (state, action) => {
