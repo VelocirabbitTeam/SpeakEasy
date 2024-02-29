@@ -15,6 +15,7 @@ const transcriptSchema = new Schema(
   },
   {
     timestamps: true,
+    
   }
 );
 

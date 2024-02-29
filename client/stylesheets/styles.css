@@ -222,11 +222,11 @@ buttons {
 }
 
 
-.record-btn:hover {
+/* .record-btn:hover {
     background-color: lightpink;
     transition: .25s ease;
     color: white;
-}
+} */
 
 .record-btn > svg:hover {
     width: 25px;
