@@ -1,20 +1,25 @@
 import React from "react";
-import Socket from "../components/Socket.jsx";
 import Record from "../components/Record.jsx";
 import { logout } from "../slices/reducers/userSlice.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import WebSocket from "../components/WebSocket.jsx";
 
 const PlayContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const userData = useSelector((state) => state.user);
+  const userID = userData.userData.user_id;
+  // console.log(`userID:`, userID);
 
   const logOutHandler = () => {
     dispatch(logout());
     navigate("/login");
   };
   return (
-    <div className="bg-black h-100vh text-white">
+    <div className="bg-black min-h-screen text-white">
+      {/* return (
+    <div className="bg-black h-100vh text-white"> */}
       <div className="grid grid-cols-2 py-8 px-12">
         <div className="col-span-1 flex items-center text-4xl">
           <h3 className="mr-2">Speechr</h3>
@@ -45,7 +50,7 @@ const PlayContainer = () => {
 
       <div className=" items-center">
         {/* <Record /> */}
-        <Socket />
+        <WebSocket />
       </div>
     </div>
   );
