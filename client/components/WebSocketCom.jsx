@@ -13,6 +13,10 @@ export default function WebSocketCom() {
   const DEEPGRAM_API_KEY_2 = process.env.REACT_APP_DEEPGRAM_API_KEY_2;
 
   const [saveTranscript] = useSaveTranscriptMutation();
+  const saveTranscriptHandler = (e) => {
+    console.log(`saveTranscriptHandler body`);
+    saveTranscript({ userID: userID, content: transcript1 });
+  };
 
   let socket = "";
   let mediaRecorder;
@@ -180,6 +184,7 @@ export default function WebSocketCom() {
           {/* ANALYZE BUTTON  */}
           <Link to="/results">
             <button
+              onClick={saveTranscriptHandler}
               className="border-2 mx-auto text-gray-950 font-bold py-3 mt-6 px-12
               rounded-3xl 
               bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300
