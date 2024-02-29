@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React from 'react';
-import Record from '../components/Record.jsx';
-import WebSocketCom from '../components/WebSocketCom.jsx';
-import { useSelect } from '@react-three/drei';
-
-const PlayContainer = () => {
-
-   return (
-    <div className='bg-black min-h-screen text-white'>
-=======
 import React from "react";
 import Record from "../components/Record.jsx";
 import { logout } from "../slices/reducers/userSlice.js";
@@ -19,7 +8,6 @@ import WebSocketCom from "../components/WebSocketCom.jsx";
 const PlayContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
->>>>>>> dev
 
   const logOutHandler = () => {
     dispatch(logout());

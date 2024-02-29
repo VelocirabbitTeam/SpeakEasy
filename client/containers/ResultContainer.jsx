@@ -40,7 +40,7 @@ const ResultContainer = () => {
 
   return (
     <>
-      <div className="bg-black text-white relative overflow-scroll min-h-screen pb-48">
+      <div className="bg-black text-white relative overflow-scroll min-h-screen pb-32">
         {/* ---------------------------------------------------- */}
         <div className="grid grid-cols-2 py-8 px-16">
           <div className="col-span-1 flex items-center text-4xl">
@@ -81,7 +81,7 @@ const ResultContainer = () => {
           <CurTransAna />
 
           {/* RESULT --------------------------------------------------- */}
-          <div className="text-4xl mt-48 mb-14 flex mx-auto justify-center">
+          <div className="text-4xl mt-32 mb-14 flex mx-auto justify-center">
             Your Journey so far
             <GiJourney className="ml-4" />{" "}
           </div>
@@ -110,6 +110,9 @@ const ResultContainer = () => {
       {/* <Link to="/record">
         <button className="record-btn data-container-btn">Record Again!</button>
       </Link> */}
+
+      {/* RECORD BUTTON---------------------------------------------------- */}
+
     </>
   );
 };
