@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { logout } from "../slices/reducers/userSlice.js";
 import { useNavigate } from "react-router-dom";
 import Result from "../components/Result.jsx";
+import { GiJourney } from "react-icons/gi";
+import { CurTransAna } from "../components/CurTransAna.jsx";
 
 const ResultContainer = () => {
   const dispatch = useDispatch();
@@ -38,7 +40,7 @@ const ResultContainer = () => {
 
   return (
     <>
-      <div className="bg-black text-white relative overflow-scroll min-h-screen">
+      <div className="bg-black text-white relative overflow-scroll min-h-screen pb-48">
         {/* ---------------------------------------------------- */}
         <div className="grid grid-cols-2 py-8 px-16">
           <div className="col-span-1 flex items-center text-4xl">
@@ -69,26 +71,31 @@ const ResultContainer = () => {
         </div>
 
         {/* ---------------------------------------------------- */}
-        <div className="px-28 text-center pt-2">
+        <div className="px-28 text-center">
           {/* <CurrentSession
             className="curr-session-div"
             currSession={currSession}
           /> */}
 
-          {/* ---------------------------------------------------- */}
-          <h1 className="text-4xl mb-14">Analyze Result</h1>
+          {/* CURRENT TRANSCRIPT ANALYSE --------------------------------------------------- */}
+          <CurTransAna />
+
+          {/* RESULT --------------------------------------------------- */}
+          <div className="text-4xl mt-48 mb-14 flex mx-auto justify-center">
+            Your Journey so far
+            <GiJourney className="ml-4" />{" "}
+          </div>
           {/* <SessionTrends dataArr={wordCountTrends} title="wordCountTrends" />
           <SessionTrends dataArr={wordPerSec} title="wordPerSec" />
           <SessionTrends dataArr={avgPauseDur} title="avgPauseDur" />
-          <SessionTrends dataArr={totalPauses} title="totalPauses" />
-
-
+          <SessionTrends dataArr={totalPauses} title="totalPauses" /> */}
+          <Result />
 
           {/* RECORD BUTTON---------------------------------------------------- */}
           <div
             className="w-full flex justify-center
           fixed bottom-0 right-0 z-20 py-6
-          bg-white opacity-90
+          bg-white 
           text-white
           hover:text-black font-bold text-2xl
           bg-gradient-to-r from-indigo-300 via-purple-300 to-pink-300"

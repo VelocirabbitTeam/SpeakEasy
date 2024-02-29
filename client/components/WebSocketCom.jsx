@@ -128,12 +128,11 @@ export default function WebSocketCom() {
         >
           {initialized ? "Initialized" : "Initialize"}
         </button> */}
-        <div className=" grid-cols-1 items-center mt-4 flex gap-4">
+        <div className=" grid-cols-1 items-center mt-4 flex gap-6">
           <button
             onClick={initialize}
-            className={`mx-auto text-black font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300
-            hover:text-white 
-            mt-6 record-btn`}
+            className={`mx-autofont-bold mt-6 record-btn
+            hover:bg-slate-900`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -152,9 +151,8 @@ export default function WebSocketCom() {
 
           <button
             id="stopButton"
-            className={`mx-auto font-bold 
-            mt-6 record-btn ${re && "pulse-animation"}
-            }`}
+            className={`mx-auto font-bold mt-6 record-btn hover:bg-slate-900
+            ${re && "pulse-animation"}`}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -178,6 +176,18 @@ export default function WebSocketCom() {
           >
             Stop
           </button> */}
+
+          {/* ANALYZE BUTTON  */}
+          <Link to="/results">
+            <button
+              className="border-2 mx-auto text-gray-950 font-bold py-3 mt-6 px-12
+              rounded-3xl 
+              bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-300
+            hover:text-white"
+            >
+              <p>Analyze</p>
+            </button>
+          </Link>
         </div>
 
         {/* <p id="status">{initialized ? "Connected" : "Not Connected"}</p> */}
