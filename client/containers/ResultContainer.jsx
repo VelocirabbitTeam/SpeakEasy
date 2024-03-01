@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../components/Button.jsx";
 import CurrentSession from "../components/CurrentSession.jsx";
 import SessionTrends from "../components/SessionTrends.jsx";
@@ -9,16 +9,17 @@ import { useNavigate } from "react-router-dom";
 import Result from "../components/Result.jsx";
 import { GiJourney } from "react-icons/gi";
 import { CurTransAna } from "../components/CurTransAna.jsx";
-<<<<<<< HEAD
-import History from '../components/History.jsx'
+import { useGetTranscriptQuery} from "../slices/apiSlices/audioApi.js";
 import { FaHistory } from "react-icons/fa";
-=======
-import { useGetTranscriptQuery } from "../slices/apiSlices/audioApi.js";
->>>>>>> dev
+import HistoryCom from '../components/HistoryCom'
+
 
 const ResultContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [data1, setData1] = useState([]);
+
+  const [analyse, setAnalyse] = useState({})
 
   const logOutHandler = () => {
     dispatch(logout());
@@ -28,10 +29,12 @@ const ResultContainer = () => {
 
   const { id } = useParams();
 
-  const { data, isLoading } = useGetTranscriptQuery(id);
+  const { data, isLoading, error } = useGetTranscriptQuery(id);
 
   useEffect(() => {
+    setData1(data1)
     console.log(data);
+    
   }, [data, isLoading]);
 
   const currSession = sessionData[sessionData.length - 1];
@@ -91,8 +94,11 @@ const ResultContainer = () => {
             currSession={currSession}
           /> */}
 
-          {/* CURRENT TRANSCRIPT ANALYSE --------------------------------------------------- */}
-          <CurTransAna />
+          {/* CURRENT TRANSCRIPT ANALYSE --------------------------------------------------- */}  
+          {isLoading ? error : (
+            <CurTransAna data={data[data.length - 1]}/>
+          )}
+
 
           {/* RESULT --------------------------------------------------- */}
           <div className="text-4xl mt-32 mb-14 flex mx-auto justify-center
@@ -114,7 +120,9 @@ const ResultContainer = () => {
             <FaHistory className="ml-4" />{" "}
           </div>
           
-          <History />
+          {isLoading ? error : (
+            <HistoryCom data={data}/>
+          )}
 
 
 
@@ -138,12 +146,7 @@ const ResultContainer = () => {
         <button className="record-btn data-container-btn">Record Again!</button>
       </Link> */}
 
-<<<<<<< HEAD
-      {/*---------------------------------------------------- */}
-
-=======
       {/* RECORD BUTTON---------------------------------------------------- */}
->>>>>>> dev
     </>
   );
 };

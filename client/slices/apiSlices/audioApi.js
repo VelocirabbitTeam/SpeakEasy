@@ -15,7 +15,14 @@ export const audioApi = api.injectEndpoints({
         method: `GET`,
       }),
     }),
+    getAnalyse: builder.mutation({
+      query: (data) => ({
+        url: `api/analyze`,
+        method: `POST`,
+        body: data,
+      })
+    })
   }),
 });
 
-export const { useSaveTranscriptMutation, useGetTranscriptQuery } = audioApi;
+export const { useSaveTranscriptMutation, useGetTranscriptQuery, useGetAnalyseMutation } = audioApi;

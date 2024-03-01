@@ -1,7 +1,59 @@
 import React from "react";
 import { IoMdTime } from "react-icons/io";
 
-export const CurTransAna = () => {
+export const CurTransAna = ({ data }) => {
+  console.log("data analyze: ", data);
+
+  //get count of each word in transcript:
+  const words = data.content.split(" ");
+  const uniqueWords = [...new Set(words)];
+  const wordCount = [];
+  for (let i = 0; i < uniqueWords.length; i++) {
+    let count = 0;
+    for (let j = 0; j < words.length; j++) {
+      if (words[j] === uniqueWords[i]) {
+        count++;
+      }
+    }
+    wordCount.push(count);
+  }
+  const analysis = {};
+  let maxCount = 0;
+
+  for (let i = 0; i < uniqueWords.length; i++) {
+    analysis[uniqueWords[i]] = wordCount[i];
+    if (maxCount < wordCount[i]) {
+      maxCount = wordCount;
+    }
+  }
+  console.log("analysis", analysis);
+  console.log("maxCount", maxCount);
+  console.log("word", analysis[maxCount]);
+
+  const sortable = [];
+  let topFive;
+  for (const word in analysis) {
+    sortable.push([word, analysis[word]]);
+  }
+  sortable.sort((a, b) => {
+    return b[1] - a[1];
+  });
+  const analysisSorted = {};
+  sortable.forEach((el) => {
+    return (analysisSorted[el[0]] = el[1]);
+  });
+  console.log("analysisSorted", analysisSorted);
+  topFive = [];
+  let count = 0;
+  for (const word in analysisSorted) {
+    if (count > 4) {
+      break;
+    } else {
+      topFive.push([word, analysisSorted[word]]);
+      count++;
+    }
+  }
+  console.log("topFive: ", topFive);
   return (
     <div className="pt-12 ">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 ">
@@ -38,9 +90,13 @@ export const CurTransAna = () => {
                 </div> */}
                 Words Repeated Frequently
               </dt>
-              <dd className="mt-2 text-base leading-7 text-gray-600">
-                EasySpeak
-              </dd>
+              <div className="mt-2 text-base leading-7 text-gray-600">
+                {topFive.map((ele) => (
+                  <div className="">
+                    <p>{ele[0]}: {ele[1]}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="relative ml-12">
